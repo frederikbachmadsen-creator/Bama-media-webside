@@ -43,7 +43,8 @@ body { margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 2
 img { max-width: 100%; display: block; }
 a { color: var(--clay-deep); }
 p { margin: 0; }
-h1, h2, .display { font-family: var(--font-display); font-weight: 400; margin: 0; }
+h1, h2, .display { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+p, li { text-wrap: pretty; }
 h3 { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; }
 .display { font-size: 40px; line-height: 44px; letter-spacing: -0.5px; }
 .h1 { font-size: 32px; line-height: 38px; }
@@ -58,7 +59,9 @@ h3 { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; }
 
 .btn { display: inline-flex; align-items: center; gap: 12px; padding: 8px 8px 8px 24px; border-radius: var(--r-pill); border: 0; background: var(--clay); color: var(--on-clay); font: 700 16px/20px var(--font-sans); text-decoration: none; cursor: pointer; }
 .btn .arr { width: 32px; height: 32px; border-radius: 50%; background: var(--on-clay); color: var(--clay); display: grid; place-items: center; }
+.btn { transition: transform .15s ease; }
 .btn:hover { background: var(--clay-deep); }
+.btn:active { transform: scale(.97); }
 .btn:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--clay); display: inline-block; flex: none; }
 
@@ -149,7 +152,7 @@ header .btn .arr { width: 26px; height: 26px; }
 .pcard.oat { background: var(--oat); }
 .tagbox { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 4px 8px; border-radius: var(--r-sm); background: var(--butter); color: #2a221d; }
 .amount { font-family: var(--font-display); font-size: 40px; line-height: 44px; }
-.amount small { font-family: var(--font-sans); font-size: 14px; font-weight: 700; }
+.amount small { font-family: var(--font-sans); font-size: 14px; font-weight: 700; line-height: 0; }
 .pcard ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .pcard li { display: flex; gap: 10px; align-items: flex-start; }
 .pcard li::before { content: "✓"; width: 18px; height: 18px; margin-top: 3px; flex: none; border-radius: 50%; border: 1.5px solid currentColor; font-size: 11px; line-height: 15px; text-align: center; font-weight: 700; }
@@ -173,6 +176,23 @@ table.cmp { width: 100%; min-width: 720px; border-collapse: collapse; font-size:
 .cmp td.me { color: var(--ink); font-weight: 700; }
 .cmp td::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--line); margin-right: 8px; vertical-align: 2px; }
 .cmp td.me::before { background: var(--sage); }
+.cmp .who { display: none; }
+@media (max-width: 719px) {
+  .cmp-wrap { overflow: visible; margin: 0; padding: 0; }
+  table.cmp { min-width: 0; }
+  .cmp thead { display: none; }
+  .cmp tbody { display: flex; flex-direction: column; gap: 12px; }
+  .cmp tr { display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; }
+  .cmp th, .cmp td { padding: 0; border: 0; width: auto; }
+  .cmp tbody th { display: block; width: auto; }
+  .cmp td::before { display: none; }
+  .cmp td { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; line-height: 20px; }
+  .cmp td .who { display: block; flex: none; color: var(--ink-muted); font-weight: 400; }
+  .cmp td.me { font-size: 16px; line-height: 24px; padding: 8px 12px; margin-bottom: 4px; background: var(--oat); border-radius: var(--r-sm); }
+  .cmp td.me .who { color: var(--clay-deep); font-weight: 700; }
+  .cmp td { text-align: right; }
+  .cmp td .who { text-align: left; }
+}
 
 /* Mørkt gitter med tal og billeder */
 .trust-head { display: grid; gap: 24px; margin-bottom: 40px; }
@@ -184,14 +204,19 @@ table.cmp { width: 100%; min-width: 720px; border-collapse: collapse; font-size:
 .tile.stat { background: var(--clay); color: var(--on-clay); padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
 .tile.stat .n { font-family: var(--font-display); font-size: 36px; line-height: 40px; }
 .tile.stat b { font-size: 15px; line-height: 20px; }
-.tile.stat span { font-size: 13px; line-height: 18px; opacity: .9; }
+.tile.stat span { font-size: 13px; line-height: 18px; opacity: .9; text-wrap: pretty; }
 .tile.sage { background: var(--sage); }
+.tile.dots { position: relative; overflow: hidden; }
+.tile.dots span { position: absolute; border-radius: 50%; }
+.tile.dots .c1 { width: 56%; aspect-ratio: 1; background: var(--clay); left: 12%; top: 16%; }
+.tile.dots .c2 { width: 32%; aspect-ratio: 1; background: var(--sage); right: 12%; bottom: 14%; }
+.tile.dots .c3 { width: 12%; aspect-ratio: 1; background: var(--butter); right: 22%; top: 18%; }
 .about { display: grid; gap: 24px; padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--dark-line); }
-.about .avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--oat); display: grid; place-items: center; }
+.about .avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--on-dark); display: grid; place-items: center; }
 .about .avatar img { width: 32px; }
 
 /* Kort på række */
-.cards-row { display: flex; gap: 12px; overflow-x: auto; padding: 40px 16px; scroll-snap-type: x mandatory; }
+.cards-row { display: flex; gap: 12px; overflow-x: auto; padding: 40px 16px; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; scrollbar-width: thin; scrollbar-color: var(--dark-line) transparent; }
 .qcard { flex: none; width: 260px; scroll-snap-align: start; background: var(--surface); color: var(--ink); border-radius: var(--r-md); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 200px; }
 .qcard .q { font-family: var(--font-display); font-size: 40px; line-height: 1; color: var(--clay); }
 .qcard p.big { font-size: 20px; line-height: 26px; font-weight: 700; }
@@ -204,6 +229,7 @@ table.cmp { width: 100%; min-width: 720px; border-collapse: collapse; font-size:
 .faq details { border-bottom: 1px solid rgba(251,247,241,.4); }
 .faq summary { list-style: none; cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; gap: 16px; font-weight: 700; }
 .faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { text-decoration: underline; text-underline-offset: 4px; }
 .faq summary::after { content: "+"; width: 22px; height: 22px; border-radius: 50%; background: var(--on-clay); color: var(--clay); display: grid; place-items: center; flex: none; font-size: 16px; line-height: 1; transition: transform .2s; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { padding-bottom: 16px; max-width: 44em; }
@@ -251,7 +277,7 @@ footer a { color: var(--on-dark); }
   .tiles { grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .tile.stat .n { font-size: 48px; line-height: 52px; }
   .about { grid-template-columns: 1.4fr 1fr; }
-  .cards-row { padding-left: max(16px, calc((100vw - var(--max)) / 2 + 16px)); }
+  .cards-row { padding-left: max(16px, calc((100vw - var(--max)) / 2 + 16px)); scroll-padding-inline: max(16px, calc((100vw - var(--max)) / 2 + 16px)); }
   .qcard { width: 300px; }
   .faq-card { padding: 40px; }
   .form-card { padding: 32px; }
@@ -294,10 +320,10 @@ footer a { color: var(--on-dark); }
         <span class="hero-note"><span class="dot"></span>Kan du ikke lide det, siger du bare nej tak</span>
       </div>
       <div class="phones" aria-hidden="true">
-        <div class="phone ph-1"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Tømrer · Hørsholm</span><span class="t">Nyt tag, nye vinduer.</span><span class="bar"></span><span class="b"></span></div></div></div>
-        <div class="phone ph-2"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Frisør · Birkerød</span><span class="t">Book en tid i dag.</span><span class="bar"></span><span class="b"></span></div></div></div>
-        <div class="phone ph-3"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Café · Holte</span><span class="t">Åbent fra kl. 8.</span><span class="bar"></span><span class="b"></span></div></div></div>
-        <div class="phone ph-4"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Klinik · Lyngby</span><span class="t">Ring og bestil tid.</span><span class="bar"></span><span class="b"></span></div></div></div>
+        <div class="phone ph-1"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Tømrer · Hørsholm</span><span class="t">Nyt tag, nye vinduer.</span><span class="bar"></span><span class="b"></span></div></div></div>
+        <div class="phone ph-2"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Frisør · Birkerød</span><span class="t">Book en tid i dag.</span><span class="bar"></span><span class="b"></span></div></div></div>
+        <div class="phone ph-3"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Café · Holte</span><span class="t">Åbent fra kl. 8.</span><span class="bar"></span><span class="b"></span></div></div></div>
+        <div class="phone ph-4"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Klinik · Lyngby</span><span class="t">Ring og bestil tid.</span><span class="bar"></span><span class="b"></span></div></div></div>
       </div>
       <p class="phone-cap">Eksempler. Sådan kan et gratis udkast se ud på mobilen.</p>
     </div>
@@ -369,8 +395,8 @@ footer a { color: var(--on-dark); }
 
   <!-- Mørk sektion -->
   <section class="dark message" aria-labelledby="msg-h">
-    <div class="phone tl" aria-hidden="true"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Maler · Allerød</span><span class="t">Ring for et tilbud.</span><span class="bar"></span><span class="b" style="background:#66765a"></span></div></div></div>
-    <div class="phone tr" aria-hidden="true"><div class="scr"><div class="ph">Foto</div><div class="txt"><span class="tag">Butik · Hillerød</span><span class="t">Se åbningstider.</span><span class="bar"></span><span class="b" style="background:#b5502c"></span></div></div></div>
+    <div class="phone tl" aria-hidden="true"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Maler · Allerød</span><span class="t">Ring for et tilbud.</span><span class="bar"></span><span class="b" style="background:#66765a"></span></div></div></div>
+    <div class="phone tr" aria-hidden="true"><div class="scr"><div class="ph"></div><div class="txt"><span class="tag">Butik · Hillerød</span><span class="t">Se åbningstider.</span><span class="bar"></span><span class="b" style="background:#b5502c"></span></div></div></div>
     <div class="wrap">
       <div class="sec-head">
         <span class="label">Det dine kunder leder efter</span>
@@ -449,11 +475,11 @@ footer a { color: var(--on-dark); }
             <tr><th></th><th class="me"><span>Bama</span></th><th><span>Bureau</span></th><th><span>Gør det selv</span></th><th><span>Kun Facebook</span></th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Før du betaler</th><td class="me">Du ser et gratis udkast</td><td>Møder og tilbud</td><td>Du betaler for værktøjet</td><td>Gratis</td></tr>
-            <tr><th scope="row">Pris</th><td class="me">Fast, aftalt på forhånd</td><td>Varierer</td><td>Din tid og dine aftener</td><td>Gratis</td></tr>
-            <tr><th scope="row">Hvem du snakker med</th><td class="me">Én person, altid den samme</td><td>Flere forskellige</td><td>Dig selv</td><td>Ingen</td></tr>
-            <tr><th scope="row">Rettelser bagefter</th><td class="me">Du skriver, jeg retter</td><td>Ofte ekstra</td><td>Det klarer du selv</td><td>Det klarer du selv</td></tr>
-            <tr><th scope="row">Bliver fundet på Google</th><td class="me">Ja, med lokale tekster</td><td>Ja</td><td>Hvis du ved hvordan</td><td>Sjældent</td></tr>
+            <tr><th scope="row">Før du betaler</th><td class="me"><span class="who">Bama</span>Du ser et gratis udkast</td><td><span class="who">Bureau</span>Møder og tilbud</td><td><span class="who">Gør det selv</span>Du betaler for værktøjet</td><td><span class="who">Kun Facebook</span>Gratis</td></tr>
+            <tr><th scope="row">Pris</th><td class="me"><span class="who">Bama</span>Fast, aftalt på forhånd</td><td><span class="who">Bureau</span>Varierer</td><td><span class="who">Gør det selv</span>Din tid og dine aftener</td><td><span class="who">Kun Facebook</span>Gratis</td></tr>
+            <tr><th scope="row">Hvem du snakker med</th><td class="me"><span class="who">Bama</span>Én person, altid den samme</td><td><span class="who">Bureau</span>Flere forskellige</td><td><span class="who">Gør det selv</span>Dig selv</td><td><span class="who">Kun Facebook</span>Ingen</td></tr>
+            <tr><th scope="row">Rettelser bagefter</th><td class="me"><span class="who">Bama</span>Du skriver, jeg retter</td><td><span class="who">Bureau</span>Ofte ekstra</td><td><span class="who">Gør det selv</span>Det klarer du selv</td><td><span class="who">Kun Facebook</span>Det klarer du selv</td></tr>
+            <tr><th scope="row">Bliver fundet på Google</th><td class="me"><span class="who">Bama</span>Ja, med lokale tekster</td><td><span class="who">Bureau</span>Ja</td><td><span class="who">Gør det selv</span>Hvis du ved hvordan</td><td><span class="who">Kun Facebook</span>Sjældent</td></tr>
           </tbody>
         </table>
       </div>
@@ -477,10 +503,10 @@ footer a { color: var(--on-dark); }
       <div class="tiles">
         <div class="tile ph"><div class="phone"><div class="scr"><div class="ph"></div><div class="txt"><span class="bar"></span><span class="b" style="background:#4c5d43"></span></div></div></div></div>
         <div class="tile stat"><span class="n">0 kr.</span><b>For udkastet</b><span>Du ser det, før du siger ja</span></div>
-        <div class="tile ph">Billede af færdig side i telefonramme</div>
+        <div class="tile ph"><div class="phone" style="transform:rotate(5deg)"><div class="scr"><div class="ph"></div><div class="txt"><span class="bar"></span><span class="b" style="background:var(--butter)"></span></div></div></div></div>
         <div class="tile stat sage"><span class="n">1</span><b>Person at ringe til</b><span>Det er mig, hele vejen</span></div>
         <div class="tile stat sage"><span class="n">0</span><b>Binding</b><span>Du sidder aldrig fast</span></div>
-        <div class="tile ph">Billede fra en lokal butik</div>
+        <div class="tile ph dots" aria-hidden="true"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
         <div class="tile stat"><span class="n">Fast</span><b>Pris</b><span>Aftalt, før jeg går i gang</span></div>
         <div class="tile ph"><div class="phone"><div class="scr"><div class="ph"></div><div class="txt"><span class="bar"></span><span class="b" style="background:#a3472d"></span></div></div></div></div>
       </div>
