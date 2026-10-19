@@ -244,6 +244,27 @@ table.cmp { width: 100%; min-width: 720px; border-collapse: collapse; font-size:
 .form-card label { font-size: 14px; font-weight: 700; display: flex; flex-direction: column; gap: 6px; }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; }
 .form-foot .small { font-size: 14px; color: var(--ink-muted); }
+.form-grid { display: grid; gap: 12px; }
+.form-card .opt { font-weight: 400; color: var(--ink-muted); }
+.form-card input:focus-visible, .form-card textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.form-card [aria-invalid="true"] { border-color: var(--clay-deep); }
+.pick { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.pick legend { font-size: 14px; font-weight: 700; padding: 0; margin-bottom: 8px; }
+.pick-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.form-card .pick-row label { display: block; position: relative; cursor: pointer; }
+.pick-row input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pick-row span { display: inline-block; font-size: 14px; line-height: 20px; font-weight: 700; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); transition: transform .15s ease; }
+.pick-row label:hover span { border-color: var(--ink-muted); }
+.pick-row label:active span { transform: scale(.97); }
+.pick-row input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pick-row input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.hp { position: absolute; left: -9999px; }
+.form-msg { font-size: 14px; line-height: 20px; color: var(--clay-deep); font-weight: 700; }
+.form-msg:empty { display: none; }
+.form-card button[disabled] { opacity: .6; cursor: wait; }
+.form-done { text-align: left; }
+.form-done .badge { align-self: flex-start; }
+.form-card[hidden] { display: none; }
 
 /* Footer */
 footer { background: var(--dark); color: var(--on-dark); border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 64px 0 0; margin-top: 40px; overflow: hidden; }
@@ -281,6 +302,7 @@ footer a { color: var(--on-dark); }
   .qcard { width: 300px; }
   .faq-card { padding: 40px; }
   .form-card { padding: 32px; }
+  .form-grid { grid-template-columns: 1fr 1fr; }
   .foot-grid { grid-template-columns: 1fr auto; }
 }
 @media (min-width: 1100px) {
@@ -557,18 +579,40 @@ footer a { color: var(--on-dark); }
       <div class="sec-head">
         <span class="badge"><span class="dot"></span>Spørgsmål? Skriv eller ring</span>
         <h2 class="display" id="contact-h">Din hjemmeside laver ikke sig selv. Det gør jeg.</h2>
-        <p class="lead muted">Fortæl mig navnet på din virksomhed, og hvor du holder til. Så laver jeg et udkast til dig.</p>
+        <p class="lead muted">Udfyld det, du har lyst til. Resten finder jeg selv, og så laver jeg et udkast til dig.</p>
       </div>
-      <form class="form-card" id="contact-form">
+      <form class="form-card" id="contact-form" novalidate>
         <h3 class="h2" style="font-family:var(--font-display);font-weight:400">Få et gratis udkast</h3>
-        <label>Dit navn<input name="navn" required autocomplete="name"></label>
-        <label>Virksomhed og by<input name="firma" required placeholder="Fx Jensens Tømrer, Hørsholm"></label>
-        <label>Besked<textarea name="besked" placeholder="Har du en hjemmeside i dag? Skriv gerne linket."></textarea></label>
+        <div class="form-grid">
+          <label>Dit navn<input name="navn" required autocomplete="name"></label>
+          <label>Telefon<input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" placeholder="Fx 12 34 56 78"></label>
+          <label>Virksomhed og by<input name="firma" required placeholder="Fx Jensens Tømrer, Hørsholm"></label>
+          <label>Hvad laver I?<input name="branche" required placeholder="Fx tømrer, frisør, café"></label>
+        </div>
+        <label><span>Mail <span class="opt">(hvis du vil)</span></span><input name="mail" type="email" autocomplete="email"></label>
+        <label><span>Link til jeres hjemmeside, Facebook eller Google <span class="opt">(hvis I har en)</span></span><input name="link" type="url" inputmode="url" placeholder="Fx facebook.com/jensenstomrer"></label>
+        <fieldset class="pick">
+          <legend>Hvordan bliver folk kunder hos dig? <span class="opt">(hvis du vil)</span></legend>
+          <div class="pick-row">
+            <label><input type="radio" name="kunder" value="De ringer"><span>De ringer</span></label>
+            <label><input type="radio" name="kunder" value="De booker online"><span>De booker online</span></label>
+            <label><input type="radio" name="kunder" value="De skriver en mail"><span>De skriver en mail</span></label>
+            <label><input type="radio" name="kunder" value="De kommer forbi"><span>De kommer forbi</span></label>
+          </div>
+        </fieldset>
+        <label><span>Andet jeg skal vide? <span class="opt">(hvis du vil)</span></span><textarea name="besked" placeholder="Fx hvad du gerne vil have på siden"></textarea></label>
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
         <div class="form-foot">
           <button class="btn" type="submit">Send <span class="arr" aria-hidden="true">→</span></button>
           <span class="small">Eller ring på <a href="tel:+4551866163">51 86 61 63</a></span>
         </div>
       </form>
+      <div class="form-card form-done" id="form-done" hidden tabindex="-1">
+        <span class="badge"><span class="dot"></span>Sendt</span>
+        <h3 class="h2" style="font-family:var(--font-display);font-weight:400">Tak, <span id="done-name"></span>.</h3>
+        <p class="muted">Jeg har fået dine oplysninger og ringer til dig, når jeg har kigget på det. Du betaler ikke noget for udkastet.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -595,12 +639,61 @@ footer a { color: var(--on-dark); }
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
-// Formularen åbner en mail, indtil der er hosting med formular-håndtering
-document.getElementById('contact-form').addEventListener('submit', function (e) {
+// Formularen sendes via Web3Forms (gratis) og lander i bamamedia@gmail.com.
+// Nøglen er offentlig (Web3Forms er lavet til det). Uden nøgle åbner formularen en mail i stedet.
+var WEB3FORMS_KEY = 'b66fd184-f9a9-49f7-a1ae-dcdc0c4a7a6b';
+var form = document.getElementById('contact-form');
+var msg = document.getElementById('form-msg');
+form.addEventListener('submit', function (e) {
   e.preventDefault();
-  var f = e.target;
-  var body = 'Navn: ' + f.navn.value + '\nVirksomhed og by: ' + f.firma.value + '\n\n' + f.besked.value;
-  window.location.href = 'mailto:bamamedia@gmail.com?subject=' + encodeURIComponent('Gratis udkast: ' + f.firma.value) + '&body=' + encodeURIComponent(body);
+  var f = form;
+  msg.textContent = '';
+  var missing = null;
+  ['navn', 'telefon', 'firma', 'branche'].forEach(function (n) {
+    var ok = f[n].value.trim() !== '';
+    f[n].setAttribute('aria-invalid', ok ? 'false' : 'true');
+    if (!ok && !missing) missing = f[n];
+  });
+  if (missing) { msg.textContent = 'Udfyld lige navn, telefon, virksomhed og hvad I laver.'; missing.focus(); return; }
+  if (f.botcheck.checked) return;
+  var kunder = f.querySelector('input[name="kunder"]:checked');
+  var data = {
+    'Navn': f.navn.value.trim(),
+    'Telefon': f.telefon.value.trim(),
+    'Mail': f.mail.value.trim(),
+    'Virksomhed og by': f.firma.value.trim(),
+    'Hvad de laver': f.branche.value.trim(),
+    'Link': f.link.value.trim(),
+    'Sådan bliver folk kunder': kunder ? kunder.value : '',
+    'Besked': f.besked.value.trim()
+  };
+  var subject = 'Gratis udkast: ' + data['Virksomhed og by'];
+  if (!WEB3FORMS_KEY) {
+    var body = Object.keys(data).map(function (k) { return k + ': ' + data[k]; }).join('\n');
+    window.location.href = 'mailto:bamamedia@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    return;
+  }
+  var btn = f.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  var payload = new FormData();
+  payload.append('access_key', WEB3FORMS_KEY);
+  payload.append('subject', subject);
+  payload.append('from_name', 'Bama hjemmeside');
+  if (data['Mail']) payload.append('replyto', data['Mail']);
+  Object.keys(data).forEach(function (k) { payload.append(k, data[k]); });
+  // FormData i stedet for JSON, så browseren ikke laver et CORS-forhåndstjek, som Web3Forms afviser
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: payload }).then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.success) throw new Error(res.message);
+    document.getElementById('done-name').textContent = data['Navn'].split(' ')[0];
+    form.hidden = true;
+    var done = document.getElementById('form-done');
+    done.hidden = false;
+    done.focus({ preventScroll: true });
+    document.getElementById("kontakt").scrollIntoView({ block: "start" });
+  }).catch(function () {
+    btn.disabled = false;
+    msg.innerHTML = 'Det gik ikke at sende. Prøv igen, eller ring på <a href="tel:+4551866163">51 86 61 63</a>.';
+  });
 });
 </script>
 </body>
