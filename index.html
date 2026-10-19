@@ -1,0 +1,513 @@
+<title>Bama hjemmesider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Bama laver enkle hjemmesider til små virksomheder i Nordsjælland og København. Se et gratis udkast af din nye forside, før du betaler noget.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="brand/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Young+Serif&display=swap">
+<style>
+/* Layout: lys papir-side, venstrestillede sektioner på et 1120px spor, telefon-udkast som heltens bevis */
+:root {
+  --paper: #f4ede3;
+  --surface: #fbf7f1;
+  --oat: #e8dcca;
+  --line: #d6c7b1;
+  --ink: #2a221d;
+  --ink-muted: #6a5d52;
+  --clay: #b5502c;
+  --clay-deep: #8e3b1e;
+  --on-clay: #fbf7f1;
+  --sage: #66765a;
+  --butter: #e7b547;
+  --screen: #fbf7f1;
+
+  --font-display: "Boston Angel", "Young Serif", Georgia, serif;
+  --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --r-sm: 8px; --r-md: 16px; --r-lg: 28px; --r-pill: 999px;
+  --max: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1d1814; --surface: #26201b; --oat: #302822; --line: #46392f;
+    --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #c9653f; --clay-deep: #e3906a;
+    --on-clay: #fbf7f1; --sage: #8c9c7e; --butter: #e7b547; --screen: #fbf7f1;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1d1814; --surface: #26201b; --oat: #302822; --line: #46392f;
+  --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #c9653f; --clay-deep: #e3906a;
+  --on-clay: #fbf7f1; --sage: #8c9c7e; --butter: #e7b547; --screen: #fbf7f1;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--clay-deep); }
+:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+}
+
+.label {
+  font-size: 12px; line-height: 16px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
+}
+.h-display { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 6.4vw, 56px); line-height: 1.07; letter-spacing: -0.01em; }
+.h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 4.6vw, 40px); line-height: 1.15; }
+.h3 { font-family: var(--font-sans); font-weight: 700; font-size: 20px; line-height: 26px; }
+.lead { font-size: 18px; line-height: 28px; color: var(--ink-muted); max-width: 34em; }
+.muted { color: var(--ink-muted); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill);
+  font: 700 16px/1 var(--font-sans); text-decoration: none; cursor: pointer;
+  border: 1.5px solid transparent; transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--clay); color: var(--on-clay); }
+.btn-primary:hover { background: var(--clay-deep); }
+:root[data-theme="dark"] .btn-primary:hover { background: var(--clay); filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.logo { display: block; line-height: 0; }
+.logo img { height: 32px; width: auto; }
+.logo .on-dark { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo .on-light { display: none; } :root:not([data-theme="light"]) .logo .on-dark { display: block; } }
+:root[data-theme="dark"] .logo .on-light { display: none; }
+:root[data-theme="dark"] .logo .on-dark { display: block; }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a.navlink { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav a.navlink:hover { color: var(--clay-deep); }
+.nav .btn { min-height: 40px; padding: 10px 18px; font-size: 15px; }
+@media (max-width: 760px) { .nav a.navlink { display: none; } }
+
+/* Hero */
+.hero { padding-block: 56px 64px; position: relative; overflow: hidden; }
+.hero-grid { display: grid; gap: 48px; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 64px; } .hero { padding-block: 80px 96px; } }
+.hero-copy { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.hero-copy .h-display em { font-style: normal; color: var(--clay); }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.textlink { color: var(--clay-deep); font-weight: 700; text-underline-offset: 4px; }
+.hero-note { font-size: 14px; line-height: 20px; color: var(--ink-muted); display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); flex: none; }
+
+/* Searchbar + phone */
+.proof { position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; min-width: 0; }
+.proof .circle { position: absolute; border-radius: 50%; z-index: 0; }
+.proof .c1 { width: 300px; height: 300px; background: var(--oat); top: 40px; left: 50%; transform: translateX(-50%); }
+.proof .c2 { width: 22px; height: 22px; background: var(--butter); top: 30px; right: 14%; }
+.proof .c3 { width: 14px; height: 14px; background: var(--clay); bottom: 70px; left: 12%; }
+.search {
+  position: relative; z-index: 1; width: min(100%, 320px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-pill);
+  padding: 10px 18px; font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px;
+}
+.search svg { flex: none; color: var(--ink-muted); }
+.search .caret { display: inline-block; width: 1.5px; height: 16px; background: var(--clay); vertical-align: -3px; margin-left: 1px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .search .caret { animation: none; } }
+
+.phone {
+  position: relative; z-index: 1; width: 260px; max-width: 100%;
+  border: 2px solid var(--ink); border-radius: 36px; padding: 10px; background: var(--ink);
+}
+.screen { background: var(--screen); border-radius: 27px; overflow: hidden; color: #2b2622; font-family: var(--font-sans); }
+.mk-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 14px 10px; font-size: 11px; font-weight: 700; letter-spacing: .02em; }
+.mk-bar .burger { width: 16px; height: 2px; background: #2b2622; box-shadow: 0 5px 0 #2b2622, 0 -5px 0 #2b2622; }
+.mk-photo {
+  height: 132px; margin: 0 10px; border-radius: 14px; position: relative; overflow: hidden;
+  background: linear-gradient(#7d8c71, #7d8c71);
+}
+.mk-photo::before { content: ""; position: absolute; inset: auto -10% -30% -10%; height: 70%; background: #5c6a52; border-radius: 50% 50% 0 0; }
+.mk-photo::after { content: ""; position: absolute; left: 22%; bottom: 0; width: 56%; height: 58%; background: #c9b79c; clip-path: polygon(0 40%, 50% 0, 100% 40%, 100% 100%, 0 100%); }
+.mk-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.mk-tag { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6c645c; }
+.mk-h { font-family: Georgia, serif; font-size: 19px; line-height: 1.15; }
+.mk-p { font-size: 11px; line-height: 1.45; color: #6c645c; }
+.mk-btn { margin-top: 4px; background: #3e4a37; color: #fff; border-radius: 999px; font-size: 11px; font-weight: 700; text-align: center; padding: 9px; }
+.mk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+.mk-row span { background: #efe9df; border-radius: 8px; font-size: 9.5px; padding: 8px; color: #4a433d; }
+.proof-caption { position: relative; z-index: 1; font-size: 13px; color: var(--ink-muted); text-align: center; max-width: 280px; }
+
+/* Sections */
+section.block { padding-block: 64px; }
+@media (min-width: 900px) { section.block { padding-block: 96px; } }
+.band-oat { background: var(--oat); }
+.band-surface { background: var(--surface); border-block: 1px solid var(--line); }
+.sec-head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; max-width: 40em; }
+
+/* Who */
+.who-grid { display: grid; gap: 16px; }
+@media (min-width: 760px) { .who-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.who-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.who-card .icon { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; }
+.who-card .icon.sage { background: var(--sage); color: var(--on-clay); }
+.who-card .icon.clay { background: var(--clay); color: var(--on-clay); }
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
+.checks li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); margin: 8px 0 0 4px; }
+
+/* Process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.steps li { counter-increment: step; padding: 24px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+@media (min-width: 900px) { .steps li { padding: 28px 28px 0 0; } }
+.steps li::before {
+  content: counter(step); font-family: var(--font-display); font-size: 28px; line-height: 1;
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+}
+.steps li:first-child::before { background: var(--clay); color: var(--on-clay); border-color: var(--clay); }
+.steps .when { font-size: 14px; color: var(--clay-deep); font-weight: 700; }
+
+/* Prices */
+.price-grid { display: grid; gap: 16px; }
+@media (min-width: 820px) { .price-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.price { border-radius: var(--r-lg); padding: 32px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.price.plain { background: var(--surface); border: 1px solid var(--line); }
+.price.accent { background: var(--ink); color: var(--paper); }
+.price.accent .muted, .price.accent .label { color: color-mix(in srgb, var(--paper) 70%, var(--ink)); }
+.price .amount { font-family: var(--font-display); font-size: clamp(34px, 5vw, 44px); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.price .amount small { font-family: var(--font-sans); font-size: 16px; font-weight: 500; }
+.price ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.price li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; }
+.price li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage); margin: 8px 0 0 4px; }
+.price.accent li::before { background: var(--butter); }
+.pill { align-self: flex-start; background: var(--butter); color: #2a221d; border-radius: var(--r-pill); font-size: 12px; font-weight: 700; padding: 4px 12px; letter-spacing: .04em; text-transform: uppercase; }
+.addons { margin-top: 24px; display: grid; gap: 12px; }
+@media (min-width: 760px) { .addons { grid-template-columns: 1fr 1fr; } }
+.addon { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px 24px; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.addon b { font-weight: 700; }
+.price-foot { margin-top: 20px; font-size: 14px; color: var(--ink-muted); }
+
+/* About */
+.about { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .about { grid-template-columns: 0.8fr 1.2fr; gap: 64px; } }
+.portrait {
+  aspect-ratio: 4 / 5; max-width: 100%; width: 100%; border-radius: var(--r-lg); background: var(--oat);
+  border: 1px dashed var(--line); display: grid; place-items: center; text-align: center; padding: 24px;
+  color: var(--ink-muted); font-size: 14px; position: relative; overflow: hidden;
+}
+.portrait img { position: absolute; width: 48%; opacity: .9; top: 18%; }
+.portrait span { position: relative; margin-top: 55%; }
+.about-copy { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.about-copy p { max-width: 36em; }
+.towns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.towns span { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-pill); padding: 6px 14px; font-size: 14px; }
+
+/* FAQ */
+.faq { display: flex; flex-direction: column; border-top: 1px solid var(--line); max-width: 760px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; gap: 16px; font-weight: 700; font-size: 18px; line-height: 26px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-display); font-size: 26px; line-height: 1; color: var(--clay); flex: none; transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 20px; color: var(--ink-muted); max-width: 40em; }
+
+/* Contact */
+.contact { background: var(--clay); color: var(--on-clay); border-radius: var(--r-lg); padding: 40px 28px; display: grid; gap: 32px; position: relative; overflow: hidden; }
+@media (min-width: 900px) { .contact { grid-template-columns: 1.1fr 0.9fr; padding: 64px; align-items: center; } }
+.contact .h1 { color: var(--on-clay); }
+.contact p { color: color-mix(in srgb, var(--on-clay) 88%, var(--clay)); max-width: 30em; }
+.contact .ring { position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--on-clay) 22%, transparent); right: -80px; top: -80px; pointer-events: none; }
+.contact-copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; position: relative; }
+.lines { display: flex; flex-direction: column; gap: 12px; position: relative; min-width: 0; }
+.line-item { background: color-mix(in srgb, var(--on-clay) 12%, transparent); border: 1px solid color-mix(in srgb, var(--on-clay) 25%, transparent); border-radius: var(--r-md); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.line-item .k { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+.line-item a { color: var(--on-clay); font-size: 20px; font-weight: 700; text-decoration: none; user-select: all; word-break: break-all; font-variant-numeric: tabular-nums; }
+.copy-btn { background: var(--on-clay); color: #8e3b1e; border: 0; border-radius: var(--r-pill); padding: 8px 14px; font: 700 13px/1 var(--font-sans); cursor: pointer; min-height: 36px; }
+.copy-btn:focus-visible { outline-color: var(--on-clay); }
+
+/* Footer */
+footer { padding-block: 40px 48px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; font-size: 14px; color: var(--ink-muted); }
+footer .logo img { height: 26px; }
+</style>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bama, til toppen">
+      <img class="on-light" src="brand/logo/bama-logo.png" alt="Bama.">
+      <img class="on-dark" src="brand/logo/bama-logo-lys.png" alt="Bama.">
+    </a>
+    <nav class="nav" aria-label="Hovedmenu">
+      <a class="navlink" href="#saadan">Sådan foregår det</a>
+      <a class="navlink" href="#priser">Priser</a>
+      <a class="navlink" href="#om">Om Bama</a>
+      <a class="btn btn-primary" href="#kontakt">Få et gratis udkast</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="label">Hjemmesider i Nordsjælland og København</span>
+        <h1 class="h-display">Når nogen googler dig, skal de <em>finde dig.</em></h1>
+        <p class="lead">Jeg laver enkle, pæne hjemmesider til små lokale virksomheder. Du får et gratis udkast af din nye forside, før du betaler en krone.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#kontakt">Få et gratis udkast</a>
+          <a class="textlink" href="#priser">Se priser</a>
+        </div>
+        <p class="hero-note"><span class="dot" aria-hidden="true"></span>Fast pris, aftalt på forhånd. Ingen binding.</p>
+      </div>
+
+      <div class="proof" aria-label="Eksempel på et udkast til en lokal tømrer">
+        <span class="circle c1" aria-hidden="true"></span>
+        <span class="circle c2" aria-hidden="true"></span>
+        <span class="circle c3" aria-hidden="true"></span>
+        <div class="search" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>tømrer hørsholm<span class="caret"></span></span>
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <div class="mk-bar"><span>Jensens Tømrer</span><span class="burger"></span></div>
+            <div class="mk-photo"></div>
+            <div class="mk-body">
+              <span class="mk-tag">Tømrer i Hørsholm</span>
+              <p class="mk-h">Nyt tag, nye vinduer, ny tilbygning.</p>
+              <p class="mk-p">Vi har bygget i Nordsjælland siden 1998. Ring, så kommer vi ud og kigger.</p>
+              <span class="mk-btn">Ring og få et tilbud</span>
+              <div class="mk-row"><span>Tag og tagrender</span><span>Vinduer og døre</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="proof-caption">Eksempel. Sådan kan et gratis udkast til en lokal tømrer se ud på mobilen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block band-surface" aria-labelledby="who-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Til hvem</span>
+        <h2 class="h1" id="who-h">Til dig, der har travlt med at drive din forretning</h2>
+        <p class="lead">Dine kunder kigger på nettet, før de ringer. Finder de ikke noget, eller ser det gammelt ud, ringer de til den næste.</p>
+      </div>
+      <div class="who-grid">
+        <article class="who-card">
+          <span class="icon sage" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <h3 class="h3">Du har ingen hjemmeside</h3>
+          <ul class="checks">
+            <li>Kunder finder dig kun via mund til mund eller Facebook</li>
+            <li>Der står ikke, hvad du laver, hvor du arbejder eller hvordan man fanger dig</li>
+            <li>Du har tænkt på det længe, men aldrig haft tid</li>
+          </ul>
+        </article>
+        <article class="who-card">
+          <span class="icon clay" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10a6 6 0 1 1 1.8 4.3M4 15v-4h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 class="h3">Din hjemmeside trænger til en ny</h3>
+          <ul class="checks">
+            <li>Den er svær at bruge på mobilen</li>
+            <li>Ingen har rørt den i flere år, og priser eller åbningstider passer ikke</li>
+            <li>Kunder ringer og spørger om ting, der burde stå der</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="saadan" aria-labelledby="steps-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Sådan foregår det</span>
+        <h2 class="h1" id="steps-h">Du ser den, før du siger ja</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="when">Gratis</span>
+          <h3 class="h3">Du får et udkast</h3>
+          <p class="muted">Jeg laver et udkast af din nye forside ud fra det, der allerede findes om dig. Du ser det på din telefon.</p>
+        </li>
+        <li>
+          <span class="when">15 minutter</span>
+          <h3 class="h3">Vi tager en snak</h3>
+          <p class="muted">Over telefonen eller hos dig. Vi snakker om, hvad der skal med på siden, og hvad der skal ud.</p>
+        </li>
+        <li>
+          <span class="when">Ca. 2 uger</span>
+          <h3 class="h3">Jeg bygger siden</h3>
+          <p class="muted">Du skal bare sende billeder og svare på et par spørgsmål. Resten klarer jeg.</p>
+        </li>
+        <li>
+          <span class="when">Bagefter</span>
+          <h3 class="h3">Jeg holder den kørende</h3>
+          <p class="muted">Skal der ændres en pris eller et billede, skriver du bare, så retter jeg det.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block band-oat" id="priser" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Priser</span>
+        <h2 class="h1" id="price-h">Du kender prisen, før jeg går i gang</h2>
+      </div>
+      <div class="price-grid">
+        <article class="price plain">
+          <span class="label">Køb siden</span>
+          <p class="amount">5.000–15.000 <small>kr.</small></p>
+          <p class="muted">Én betaling. Prisen afhænger af, hvor mange sider du skal have.</p>
+          <ul>
+            <li>Virker på mobil, tablet og computer</li>
+            <li>Dine kontaktoplysninger, ydelser og billeder</li>
+            <li>Du ejer siden, når den er betalt</li>
+          </ul>
+        </article>
+        <article class="price accent">
+          <span class="pill">Mindst besvær</span>
+          <span class="label">Abonnement</span>
+          <p class="amount">300–800 <small>kr./md.</small></p>
+          <p class="muted">Jeg bygger siden og står for resten, så du aldrig skal tænke på den.</p>
+          <ul>
+            <li>Alt fra "Køb siden"</li>
+            <li>Hosting og opdateringer</li>
+            <li>Små rettelser, når du har brug for dem</li>
+          </ul>
+        </article>
+      </div>
+      <div class="addons">
+        <div class="addon"><b>Google-profil sat op</b><span class="muted">Så du dukker op på kortet, når folk søger lokalt</span></div>
+        <div class="addon"><b>Lokale tekster</b><span class="muted">Så du bliver fundet på fx "tømrer Hørsholm"</span></div>
+      </div>
+      <p class="price-foot">Den endelige pris aftaler vi efter en kort snak, før jeg går i gang.</p>
+    </div>
+  </section>
+
+  <section class="block" id="om" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div class="portrait">
+        <img src="brand/logo/bama-symbol.png" alt="" aria-hidden="true">
+        <span>Billede af Bama her</span>
+      </div>
+      <div class="about-copy">
+        <span class="label">Om Bama</span>
+        <h2 class="h1" id="about-h">Hej, jeg hedder Frederik. Alle kalder mig Bama.</h2>
+        <p>Jeg bor i Birkerød og laver hjemmesider til små virksomheder i nærheden. Siderne er enkle: hvem du er, hvad du laver, og hvordan kunderne fanger dig.</p>
+        <p class="muted">Du får én person at ringe til. Det er mig, der laver siden, og det er mig, du snakker med bagefter.</p>
+        <div>
+          <p class="label" style="margin-bottom:10px">Her arbejder jeg</p>
+          <div class="towns">
+            <span>Birkerød</span><span>Hørsholm</span><span>Allerød</span><span>Holte</span><span>Lyngby</span><span>Hillerød</span><span>Fredensborg</span><span>Helsingør</span><span>København</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block band-surface" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Spørgsmål</span>
+        <h2 class="h1" id="faq-h">Det bliver jeg tit spurgt om</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Jeg er ikke god til computere. Er det et problem?</summary>
+          <p>Nej. Du skal ikke lære noget nyt. Du sender billeder og svarer på nogle spørgsmål, og så klarer jeg resten.</p>
+        </details>
+        <details>
+          <summary>Koster udkastet virkelig ingenting?</summary>
+          <p>Ja. Du ser udkastet, og hvis du ikke kan lide det, siger du bare nej tak. Så hører du ikke mere fra mig.</p>
+        </details>
+        <details>
+          <summary>Hvad med domænet, altså mitfirma.dk?</summary>
+          <p>Har du et i forvejen, bruger vi det. Har du ikke, hjælper jeg dig med at købe et i dit eget navn.</p>
+        </details>
+        <details>
+          <summary>Hvad sker der, hvis jeg stopper abonnementet?</summary>
+          <p>Så aftaler vi, om du vil overtage siden eller lukke den. Der er ingen binding.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="kontakt" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact">
+        <span class="ring" aria-hidden="true"></span>
+        <div class="contact-copy">
+          <span class="label" style="color:inherit;opacity:.85">Få et gratis udkast</span>
+          <h2 class="h1" id="contact-h">Skriv eller ring, så laver jeg et udkast til dig</h2>
+          <p>Fortæl mig navnet på din virksomhed, og hvor du holder til. Så hører du fra mig inden for et par dage.</p>
+        </div>
+        <div class="lines">
+          <div class="line-item">
+            <div><div class="k">Telefon</div><a href="tel:+4551866163">51 86 61 63</a></div>
+            <button class="copy-btn" type="button" data-copy="51866163" id="copy-tel">Kopiér</button>
+          </div>
+          <div class="line-item">
+            <div style="min-width:0"><div class="k">Mail</div><a href="mailto:bamamedia@gmail.com">bamamedia@gmail.com</a></div>
+            <button class="copy-btn" type="button" data-copy="bamamedia@gmail.com" id="copy-mail">Kopiér</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bama, til toppen">
+      <img class="on-light" src="brand/logo/bama-logo.png" alt="Bama.">
+      <img class="on-dark" src="brand/logo/bama-logo-lys.png" alt="Bama.">
+    </a>
+    <span>Hjemmesider til små virksomheder i Nordsjælland og København</span>
+    <span>Birkerød</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var done = function () { btn.textContent = 'Kopieret'; setTimeout(function () { btn.textContent = 'Kopiér'; }, 1600); };
+    var fallback = function () {
+      var a = btn.parentElement.querySelector('a');
+      var r = document.createRange(); r.selectNodeContents(a);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Markeret';
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+});
+</script>

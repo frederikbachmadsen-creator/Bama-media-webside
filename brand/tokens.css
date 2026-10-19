@@ -1,0 +1,71 @@
+/* Bama – brand tokens. Importér denne fil først i dit stylesheet. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Young+Serif&display=swap");
+/* Boston Angel kræver weblicens. Læg filerne i brand/fonts/ og fjern kommentaren herunder (den skal stå efter @import). */
+/* @font-face { font-family: "Boston Angel"; src: url("fonts/BostonAngel-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; } */
+
+:root {
+  /* Farver */
+  --paper: #f4ede3;
+  --surface: #fbf7f1;
+  --oat: #e8dcca;
+  --line: #d6c7b1;
+  --ink: #2a221d;
+  --ink-muted: #6a5d52;
+  --clay: #b5502c;
+  --clay-deep: #8e3b1e;
+  --on-clay: #fbf7f1;
+  --sage: #66765a;
+  --butter: #e7b547;
+
+  /* Skrifter */
+  --font-display: "Boston Angel", "Young Serif", Georgia, serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+
+  /* Afstande */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  /* Hjørner */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --max-width: 1120px;
+}
+
+/* Basis */
+html { background: var(--paper); color: var(--ink); }
+body { margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 24px; background: var(--paper); color: var(--ink); }
+h1, h2, .display { font-family: var(--font-display); font-weight: 400; color: var(--ink); margin: 0; }
+.display { font-size: 56px; line-height: 60px; letter-spacing: -0.5px; }
+h1 { font-size: 40px; line-height: 46px; letter-spacing: -0.3px; }
+h2 { font-size: 28px; line-height: 34px; }
+h3 { font-family: var(--font-sans); font-weight: 700; font-size: 20px; line-height: 26px; margin: 0; }
+.body-lg { font-size: 18px; line-height: 28px; }
+.small { font-size: 14px; line-height: 20px; }
+.label { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--ink-muted); }
+.muted { color: var(--ink-muted); }
+a { color: var(--clay-deep); }
+
+@media (max-width: 640px) {
+  .display { font-size: 40px; line-height: 44px; }
+  h1 { font-size: 32px; line-height: 38px; }
+}
+
+/* Knap */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 14px 28px; border-radius: var(--radius-pill); border: 0;
+  background: var(--clay); color: var(--on-clay);
+  font: 700 16px/20px var(--font-sans); text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: var(--clay-deep); }
+.btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* Kort */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-4); }
