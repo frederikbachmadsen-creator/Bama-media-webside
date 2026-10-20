@@ -7,9 +7,8 @@
 <meta name="description" content="Bama laver enkle hjemmesider til små virksomheder i Nordsjælland og København. Se et gratis udkast af din nye forside, før du betaler noget.">
 <link rel="icon" type="image/png" sizes="32x32" href="brand/logo/favicon-32.png">
 <link rel="apple-touch-icon" href="brand/logo/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Young+Serif&display=swap">
+<link rel="preload" href="brand/fonts/YoungSerif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="brand/fonts/fonts.css">
 <style>
 /* Layout lånt fra projectone.website (sektionsrækkefølge og komponenter), men i Bamas brand */
 :root {
@@ -25,14 +24,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #1d1814; --surface: #26201b; --oat: #302822; --line: #46392f;
-    --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #c9653f; --clay-deep: #e3906a;
+    --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #b5502c; --clay-deep: #e3906a;
     --dark: #120f0c; --dark-line: #2f2620;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #1d1814; --surface: #26201b; --oat: #302822; --line: #46392f;
-  --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #c9653f; --clay-deep: #e3906a;
+  --ink: #f1e8dc; --ink-muted: #b6a797; --clay: #b5502c; --clay-deep: #e3906a;
   --dark: #120f0c; --dark-line: #2f2620;
   color-scheme: dark;
 }
@@ -607,6 +606,7 @@ footer a { color: var(--on-dark); }
           <button class="btn" type="submit">Send <span class="arr" aria-hidden="true">→</span></button>
           <span class="small">Eller ring på <a href="tel:+4551866163">51 86 61 63</a></span>
         </div>
+        <p class="small muted" style="font-size:14px;line-height:20px">Jeg bruger kun dine oplysninger til at lave dit udkast og kontakte dig om det. Læs mere i <a href="privatliv.html">privatlivspolitikken</a>.</p>
       </form>
       <div class="form-card form-done" id="form-done" hidden tabindex="-1">
         <span class="badge"><span class="dot"></span>Sendt</span>
@@ -632,7 +632,7 @@ footer a { color: var(--on-dark); }
           <ul><li><a href="tel:+4551866163">51 86 61 63</a></li><li><a href="mailto:bamamedia@gmail.com">bamamedia@gmail.com</a></li></ul></div>
       </div>
     </div>
-    <div class="foot-bottom"><span>© <span id="yr">2026</span> Bama</span><span>Birkerød</span></div>
+    <div class="foot-bottom"><span>© <span id="yr">2026</span> Bama</span><a href="privatliv.html">Privatlivspolitik</a><span>Birkerød</span></div>
   </div>
   <div class="big-logo" aria-hidden="true"><img src="brand/logo/bama-logo-lys.png" alt=""></div>
 </footer>

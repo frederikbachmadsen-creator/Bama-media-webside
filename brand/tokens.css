@@ -1,5 +1,5 @@
 /* Bama – brand tokens. Importér denne fil først i dit stylesheet. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Young+Serif&display=swap");
+@import url("fonts/fonts.css");
 /* Boston Angel kræver weblicens. Læg filerne i brand/fonts/ og fjern kommentaren herunder (den skal stå efter @import). */
 /* @font-face { font-family: "Boston Angel"; src: url("fonts/BostonAngel-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; } */
 
