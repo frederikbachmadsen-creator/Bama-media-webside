@@ -14,7 +14,7 @@ Bamas egen hjemmeside, der sælger enkle, pæne hjemmesider til små lokale virk
 
 Den eneste kilde er `tilbud.md` i projektmappen. Kort fortalt:
 
-- "Fundet på 14 dage": forside + Google-profil 7.500 kr. én gang. Kunden ejer siden og domænet.
+- "Fundet på Google": forside + Google-profil 7.500 kr. én gang. Kunden ejer siden og domænet.
 - Drift: 200 kr./md. inkl. hosting, opdateringer og små rettelser. Ingen binding.
 - Ekstra underside: 1.500 kr. pr. side.
 - Pilot: 3 pladser til 5.000 kr. til 31/1-2027 (mod anbefaling og lov til at bruge siden som case).
