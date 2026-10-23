@@ -39,8 +39,8 @@
       "mainEntity": [
         { "@type": "Question", "name": "Jeg er ikke god til computere. Er det et problem?", "acceptedAnswer": { "@type": "Answer", "text": "Nej. Du skal ikke lære noget nyt. Du sender billeder og svarer på nogle spørgsmål, og så klarer jeg resten." } },
         { "@type": "Question", "name": "Koster udkastet virkelig ingenting?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Du ser udkastet, og hvis du ikke kan lide det, siger du bare nej tak. Så hører du ikke mere fra mig." } },
-        { "@type": "Question", "name": "Hvad får jeg for pengene?", "acceptedAnswer": { "@type": "Answer", "text": "Du betaler 7.500 kr. én gang for din forside og din Google-profil. Så ejer du siden og domænet. Derefter koster driften 200 kr./md., og så står jeg for hosting, opdateringer og små rettelser." } },
-        { "@type": "Question", "name": "Hvad hvis der skal rettes noget bagefter?", "acceptedAnswer": { "@type": "Answer", "text": "Så skriver eller ringer du, og så retter jeg det. Små rettelser er med i driften." } },
+        { "@type": "Question", "name": "Hvad får jeg for pengene?", "acceptedAnswer": { "@type": "Answer", "text": "Du betaler 7.500 kr. én gang for din forside og din Google-profil. Så ejer du siden og domænet. Derefter koster det 200 kr./md., så holder jeg siden kørende og retter små ting, når du skriver." } },
+        { "@type": "Question", "name": "Hvad hvis der skal rettes noget bagefter?", "acceptedAnswer": { "@type": "Answer", "text": "Så skriver eller ringer du, og så retter jeg det. Små rettelser er med i de 200 kr./md." } },
         { "@type": "Question", "name": "Hvad med domænet, altså mitfirma.dk?", "acceptedAnswer": { "@type": "Answer", "text": "Har du et i forvejen, bruger vi det. Har du ikke, hjælper jeg dig med at købe et i dit eget navn." } },
         { "@type": "Question", "name": "Hvad hvis jeg ikke har billeder eller tekster klar?", "acceptedAnswer": { "@type": "Answer", "text": "Så starter vi med det, der allerede findes om dig, fx på Google eller Facebook. Resten finder vi ud af sammen." } },
         { "@type": "Question", "name": "Hvad sker der, hvis jeg stopper driften?", "acceptedAnswer": { "@type": "Answer", "text": "Der er ingen binding. Siden og domænet er dine, så vi aftaler, om du vil overtage siden eller lukke den. Du sidder aldrig fast." } }
@@ -279,7 +279,7 @@ footer a { color: var(--on-dark); }
   </section>
 
   <!-- Lyder det bekendt -->
-  <section class="block" aria-labelledby="pain-h">
+  <section class="block" aria-label="Lyder det bekendt?">
     <div class="wrap">
       <div class="bubbles">
         <span class="bubble">"Jeg har kun en Facebook-side"</span>
@@ -290,10 +290,6 @@ footer a { color: var(--on-dark); }
         <span class="bubble">"Jeg er ikke god til computere"</span>
         <span class="bubble">"Den blev lavet for mange år siden"</span>
       </div>
-      <div class="sec-head center" style="margin-bottom:0">
-        <h2 class="h1" id="pain-h">Din hjemmeside skal ikke være endnu en ting på din liste</h2>
-        <p class="lead muted">Du siger ja én gang. Så klarer jeg resten.</p>
-      </div>
     </div>
   </section>
 
@@ -301,13 +297,13 @@ footer a { color: var(--on-dark); }
   <section class="block" id="saadan" aria-labelledby="steps-h" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head">
-        <h2 class="display" id="steps-h">Du ser den, før du siger ja</h2>
-        <p class="lead muted">Jeg bygger den, jeg kan holde den kørende, og du skal ikke lære noget nyt.</p>
+        <h2 class="display" id="steps-h">Du ser din nye side, før du siger ja</h2>
+        <p class="lead muted">Bagefter klarer jeg resten, og du skal ikke lære noget nyt.</p>
       </div>
       <ol class="steps">
         <li class="step"><span class="num">1</span><span class="when">Gratis</span><h3>Du får et udkast</h3><p class="muted">Jeg laver et udkast af din nye forside ud fra det, der allerede findes om dig. Du ser det på din telefon.</p></li>
         <li class="step"><span class="num">2</span><span class="when">En kort snak</span><h3>Vi tager en snak</h3><p class="muted">Over telefonen eller hos dig. Vi finder ud af, hvad der skal med, og hvad der skal ud.</p></li>
-        <li class="step"><span class="num">3</span><span class="when">Ca. 2 uger</span><h3>Jeg bygger siden</h3><p class="muted">Du sender billeder og svarer på et par spørgsmål. Derfra tager det ca. 2 uger.</p></li>
+        <li class="step"><span class="num">3</span><span class="when">14 dage</span><h3>Jeg bygger siden</h3><p class="muted">Du sender billeder og svarer på et par spørgsmål, så jeg har teksten. 14 dage efter er din side og din Google-profil online.</p></li>
         <li class="step"><span class="num">4</span><span class="when">Bagefter</span><h3>Den holdes kørende</h3><p class="muted">Skal der ændres en pris eller et billede, skriver du bare.</p></li>
       </ol>
     </div>
@@ -322,29 +318,30 @@ footer a { color: var(--on-dark); }
       </div>
       <div class="price-grid">
         <article class="pcard dark">
+          <h3>De første 3 kunder</h3>
+          <p class="amount">5.000 <small>kr.</small></p>
+          <p class="muted">I stedet for 7.500&nbsp;kr. Gælder til 31/1-2027.</p>
+          <div class="rule"></div>
+          <ul>
+            <li>Alt det samme som "Fundet på 14&nbsp;dage", også de 200&nbsp;kr./md.</li>
+            <li>Til gengæld giver du mig en skriftlig anbefaling</li>
+            <li>Jeg må vise din side frem som eksempel</li>
+          </ul>
+        </article>
+        <article class="pcard">
           <h3>Fundet på 14&nbsp;dage</h3>
           <p class="amount">7.500 <small>kr.</small></p>
-          <p class="muted">Én betaling for forsiden og din Google-profil. Derefter 200&nbsp;kr./md. for drift.</p>
+          <p class="muted">Én betaling. Din side og din Google-profil er online 14&nbsp;dage efter, du har sendt billeder og tekst.</p>
+          <p class="muted">Derefter 200&nbsp;kr./md., så holder jeg siden kørende.</p>
           <p><b>Garanti:</b> Kan du ikke findes på Google på dit navn og din by inden 30&nbsp;dage efter, siden er live, arbejder jeg gratis, til du kan.</p>
           <div class="rule"></div>
           <ul>
             <li>En forside, der virker på mobilen</li>
             <li>Din Google-profil sat op</li>
-            <li>Hosting, opdateringer og små rettelser</li>
+            <li>Små rettelser, når du skriver</li>
             <li>Du ejer siden og domænet, når den er betalt</li>
           </ul>
-          <p class="note muted">Ingen binding på driften. Stopper du, aftaler vi, om du vil overtage siden eller lukke den. Du sidder aldrig fast.</p>
-        </article>
-        <article class="pcard">
-          <h3>Pilot: 3 pladser</h3>
-          <p class="amount">5.000 <small>kr.</small></p>
-          <p class="muted">I stedet for 7.500&nbsp;kr. Gælder til 31/1-2027.</p>
-          <div class="rule"></div>
-          <ul>
-            <li>Alt fra "Fundet på 14&nbsp;dage", også driften til 200&nbsp;kr./md.</li>
-            <li>Du giver mig en skriftlig anbefaling</li>
-            <li>Jeg må vise din side frem som eksempel</li>
-          </ul>
+          <p class="note muted">Ingen binding på de 200&nbsp;kr./md. Stopper du, aftaler vi, om du vil overtage siden eller lukke den. Du sidder aldrig fast.</p>
         </article>
       </div>
       <div class="extras">
@@ -392,8 +389,8 @@ footer a { color: var(--on-dark); }
         <div class="faq">
           <details><summary>Jeg er ikke god til computere. Er det et problem?</summary><p>Nej. Du skal ikke lære noget nyt. Du sender billeder og svarer på nogle spørgsmål, og så klarer jeg resten.</p></details>
           <details><summary>Koster udkastet virkelig ingenting?</summary><p>Ja. Du ser udkastet, og hvis du ikke kan lide det, siger du bare nej tak. Så hører du ikke mere fra mig.</p></details>
-          <details><summary>Hvad får jeg for pengene?</summary><p>Du betaler 7.500 kr. én gang for din forside og din Google-profil. Så ejer du siden og domænet. Derefter koster driften 200 kr./md., og så står jeg for hosting, opdateringer og små rettelser.</p></details>
-          <details><summary>Hvad hvis der skal rettes noget bagefter?</summary><p>Så skriver eller ringer du, og så retter jeg det. Små rettelser er med i driften.</p></details>
+          <details><summary>Hvad får jeg for pengene?</summary><p>Du betaler 7.500 kr. én gang for din forside og din Google-profil. Så ejer du siden og domænet. Derefter koster det 200 kr./md., så holder jeg siden kørende og retter små ting, når du skriver.</p></details>
+          <details><summary>Hvad hvis der skal rettes noget bagefter?</summary><p>Så skriver eller ringer du, og så retter jeg det. Små rettelser er med i de 200 kr./md.</p></details>
           <details><summary>Hvad med domænet, altså mitfirma.dk?</summary><p>Har du et i forvejen, bruger vi det. Har du ikke, hjælper jeg dig med at købe et i dit eget navn.</p></details>
           <details><summary>Hvad hvis jeg ikke har billeder eller tekster klar?</summary><p>Så starter vi med det, der allerede findes om dig, fx på Google eller Facebook. Resten finder vi ud af sammen.</p></details>
           <details><summary>Hvad sker der, hvis jeg stopper driften?</summary><p>Der er ingen binding. Siden og domænet er dine, så vi aftaler, om du vil overtage siden eller lukke den. Du sidder aldrig fast.</p></details>
@@ -422,9 +419,10 @@ footer a { color: var(--on-dark); }
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
         <div class="form-foot">
-          <button class="btn" type="submit">Send <span class="arr" aria-hidden="true">→</span></button>
+          <button class="btn" type="submit">Send, så laver jeg dit udkast <span class="arr" aria-hidden="true">→</span></button>
           <span class="small">Eller ring på <a href="tel:+4551866163">51 86 61 63</a></span>
         </div>
+        <p class="small" style="font-size:14px;line-height:20px">Jeg ringer, når udkastet er klar. Det koster ingenting.</p>
         <p class="small muted" style="font-size:14px;line-height:20px">Jeg bruger kun dine oplysninger til at lave dit udkast og kontakte dig om det. Læs mere i <a href="privatliv.html">privatlivspolitikken</a>.</p>
       </form>
       <div class="form-card form-done" id="form-done" hidden tabindex="-1">
