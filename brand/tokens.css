@@ -5,16 +5,18 @@
 
 :root {
   /* Farver */
-  --paper: #f4ede3;
-  --surface: #fbf7f1;
-  --oat: #e8dcca;
-  --line: #d6c7b1;
+  /* Ingen creme/beige: det er Claudes egen palet og får siden til at ligne AI-standard */
+  --paper: #ffffff;
+  --surface: #f4f6f3;
+  --tint: #e7ebe5;
+  --line: #d8ddd5;
   --ink: #2a221d;
-  --ink-muted: #6a5d52;
+  --ink-muted: #5c5f59;
   --clay: #b5502c;
   --clay-deep: #8e3b1e;
-  --on-clay: #fbf7f1;
-  --sage: #66765a;
+  --on-clay: #ffffff;
+  --forest: #1f3a2f;
+  --on-forest: #ffffff;
   --butter: #e7b547;
 
   /* Skrifter */
