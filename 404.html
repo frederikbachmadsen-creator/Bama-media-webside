@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
 <title>Siden findes ikke | Bama</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="32x32" href="/brand/logo/favicon-32.png">
@@ -18,18 +19,6 @@
   --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r-pill: 999px;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #111513; --surface: #181e1a; --line: #2e3831;
-    --ink: #eef1ec; --ink-muted: #a6b1a9; --accent-deep: #3dba6e;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #111513; --surface: #181e1a; --line: #2e3831;
-  --ink: #eef1ec; --ink-muted: #a6b1a9; --accent-deep: #3dba6e;
-  color-scheme: dark;
-}
 * { box-sizing: border-box; }
 html { background: var(--paper); }
 body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-sans); font-size: 16px; line-height: 24px; background: var(--paper); color: var(--ink); }
@@ -39,8 +28,6 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 header { border-bottom: 1px solid var(--line); }
 header .wrap { display: flex; align-items: center; height: 64px; }
 header img { height: 28px; width: auto; display: block; }
-.logo-dark { display: none !important; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-light { display: none !important; } :root:not([data-theme="light"]) .logo-dark { display: block !important; } }
 main { flex: 1; padding: 40px 0 64px; }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 44px; letter-spacing: -1px; margin: 0 0 16px; text-wrap: balance; }
 p { margin: 0 0 16px; text-wrap: pretty; }
@@ -62,8 +49,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 14px; li
 <header>
   <div class="wrap">
     <a href="/" aria-label="Bama, til forsiden">
-      <img class="logo-light" src="/brand/logo/bama-logo.png" alt="Bama.">
-      <img class="logo-dark" src="/brand/logo/bama-logo-lys.png" alt="Bama.">
+      <img src="/brand/logo/bama-logo.png" alt="Bama.">
     </a>
   </div>
 </header>

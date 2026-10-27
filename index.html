@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
 <title>Hjemmesider til små virksomheder i Nordsjælland | Bama</title>
 <meta name="description" content="Bama laver enkle hjemmesider til små virksomheder i Nordsjælland og København. Se et gratis udkast af din nye forside, før du betaler noget.">
 <link rel="canonical" href="https://bama-media-webside.vercel.app/">
@@ -54,7 +55,7 @@
 <link rel="preload" href="brand/fonts/YoungSerif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="brand/fonts/fonts.css">
 <style>
-/* Palet v2 (2026-10-27): hvid side, kølig sort, grøn prik/knap, skovgrøn som mørk flade. Ingen creme, beige, terracotta eller brun (se brand/BRAND.md) */
+/* Palet v2 (2026-10-27): hvid side, kølig sort, grøn prik/knap, skovgrøn som mørk flade. Ingen creme, beige, terracotta eller brun (se brand/BRAND.md). Kun lyst tema: det mørke blev fjernet 2026-10-27 og ligger i commit 81187aa */
 :root {
   --paper: #ffffff; --surface: #f4f6f3; --tint: #e7ebe5; --line: #d8ddd5;
   --ink: #161a17; --ink-muted: #565c58; --accent: #1a7f45; --accent-deep: #12603a;
@@ -64,20 +65,6 @@
   --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r-sm: 8px; --r-md: 16px; --r-lg: 28px; --r-pill: 999px;
   --max: 1120px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #111513; --surface: #181e1a; --tint: #202822; --line: #2e3831;
-    --ink: #eef1ec; --ink-muted: #a6b1a9; --accent: #1a7f45; --accent-deep: #3dba6e; --accent-word: #3dba6e;
-    --dark: #1f3a2f; --dark-line: #34503f;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #111513; --surface: #181e1a; --tint: #202822; --line: #2e3831;
-  --ink: #eef1ec; --ink-muted: #a6b1a9; --accent: #1a7f45; --accent-deep: #3dba6e; --accent-word: #3dba6e;
-  --dark: #1f3a2f; --dark-line: #34503f;
-  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -119,9 +106,6 @@ header nav { display: none; gap: 24px; }
 header nav a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px; }
 header nav a:hover { color: var(--accent-deep); }
 header .btn { font-size: 14px; padding: 8px 16px; }
-.logo-dark { display: none; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-light { display: none; } :root:not([data-theme="light"]) .logo-dark { display: block; } }
-:root[data-theme="dark"] .logo-light { display: none; } :root[data-theme="dark"] .logo-dark { display: block; }
 
 /* Hero: tekst i midten, telefoner med rigtige udkast under */
 .hero { position: relative; padding: 40px 0 24px; }
@@ -247,8 +231,7 @@ footer a { color: var(--on-dark); }
 <header>
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Bama, til toppen">
-      <img class="logo-light" src="brand/logo/bama-logo.png" alt="Bama.">
-      <img class="logo-dark" src="brand/logo/bama-logo-lys.png" alt="Bama.">
+      <img src="brand/logo/bama-logo.png" alt="Bama.">
     </a>
     <nav aria-label="Hovedmenu">
       <a href="#saadan">Sådan foregår det</a>
