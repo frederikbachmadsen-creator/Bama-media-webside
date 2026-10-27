@@ -1,6 +1,6 @@
 # Bama – design
 
-Kort udgave til Impeccable. `../CLAUDE.md` og `brand/tokens.css` er de gældende regler. Er der uenighed, vinder de altid. Brug kun CSS-variablerne fra `tokens.css`, aldrig hårdkodede hex-værdier.
+Kort udgave til Impeccable. `../CLAUDE.md`, `brand/BRAND.md` og `brand/tokens.css` er de gældende regler. Er der uenighed, vinder de altid. Brug kun CSS-variablerne fra `tokens.css`, aldrig hårdkodede hex-værdier.
 
 ## Farver
 
