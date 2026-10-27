@@ -13,27 +13,27 @@
 /* Samme opsætning som privatliv.html. Stierne starter med / fordi siden kan blive vist på enhver adresse */
 :root {
   --paper: #ffffff; --surface: #f4f6f3; --line: #d8ddd5;
-  --ink: #2a221d; --ink-muted: #5c5f59; --clay: #b5502c; --clay-deep: #8e3b1e; --on-clay: #ffffff; --clay-press: #8e3b1e;
-  --font-display: "Boston Angel", "Young Serif", Georgia, serif;
+  --ink: #161a17; --ink-muted: #565c58; --accent: #1a7f45; --accent-deep: #12603a; --on-accent: #ffffff; --accent-press: #12603a;
+  --font-display: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r-pill: 999px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #111513; --surface: #181e1a; --line: #2e3831;
-    --ink: #eef1ec; --ink-muted: #a6b1a9; --clay-deep: #e3906a;
+    --ink: #eef1ec; --ink-muted: #a6b1a9; --accent-deep: #3dba6e;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #111513; --surface: #181e1a; --line: #2e3831;
-  --ink: #eef1ec; --ink-muted: #a6b1a9; --clay-deep: #e3906a;
+  --ink: #eef1ec; --ink-muted: #a6b1a9; --accent-deep: #3dba6e;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { background: var(--paper); }
 body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-sans); font-size: 16px; line-height: 24px; background: var(--paper); color: var(--ink); }
-a { color: var(--clay-deep); }
+a { color: var(--accent-deep); }
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; width: 100%; }
 header { border-bottom: 1px solid var(--line); }
@@ -42,19 +42,19 @@ header img { height: 28px; width: auto; display: block; }
 .logo-dark { display: none !important; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-light { display: none !important; } :root:not([data-theme="light"]) .logo-dark { display: block !important; } }
 main { flex: 1; padding: 40px 0 64px; }
-h1 { font-family: var(--font-display); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.5px; margin: 0 0 16px; text-wrap: balance; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 44px; letter-spacing: -1px; margin: 0 0 16px; text-wrap: balance; }
 p { margin: 0 0 16px; text-wrap: pretty; }
 .lead { font-size: 18px; line-height: 28px; color: var(--ink-muted); margin-bottom: 40px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 24px; border-radius: var(--r-pill); background: var(--clay); color: var(--on-clay); font: 700 16px/20px var(--font-sans); text-decoration: none; transition: transform .15s ease; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 24px; border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent); font: 700 16px/20px var(--font-sans); text-decoration: none; transition: transform .15s ease; }
 .btn .arr { display: inline-block; transition: transform .15s ease; }
-.btn:hover { background: var(--clay-press); }
+.btn:hover { background: var(--accent-press); }
 .btn:hover .arr { transform: translateX(4px); }
 .btn:active { transform: scale(.97); }
 .small { font-size: 14px; line-height: 20px; color: var(--ink-muted); margin-top: 24px; }
 footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
 @media (min-width: 720px) {
   main { padding: 64px 0; }
-  h1 { font-size: 56px; line-height: 60px; }
+  h1 { font-size: 56px; line-height: 60px; letter-spacing: -1.5px; }
 }
 </style>
 </head>

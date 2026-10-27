@@ -54,13 +54,13 @@
 <link rel="preload" href="brand/fonts/YoungSerif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="brand/fonts/fonts.css">
 <style>
-/* Hvid side, kølige grå flader og skovgrøn som mørk flade. Ingen creme/beige (se CLAUDE.md, "Farver") */
+/* Palet v2 (2026-10-27): hvid side, kølig sort, grøn prik/knap, skovgrøn som mørk flade. Ingen creme, beige, terracotta eller brun (se brand/BRAND.md) */
 :root {
   --paper: #ffffff; --surface: #f4f6f3; --tint: #e7ebe5; --line: #d8ddd5;
-  --ink: #2a221d; --ink-muted: #5c5f59; --clay: #b5502c; --clay-deep: #8e3b1e;
-  --on-clay: #ffffff; --clay-press: #8e3b1e; --forest: #1f3a2f; --butter: #e7b547;
+  --ink: #161a17; --ink-muted: #565c58; --accent: #1a7f45; --accent-deep: #12603a;
+  --on-accent: #ffffff; --accent-press: #12603a; --accent-word: #1a7f45; --forest: #1f3a2f; --butter: #e7b547;
   --dark: #1f3a2f; --on-dark: #ffffff; --on-dark-muted: #b8c9be; --dark-line: #34503f;
-  --font-display: "Boston Angel", "Young Serif", Georgia, serif;
+  --font-display: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r-sm: 8px; --r-md: 16px; --r-lg: 28px; --r-pill: 999px;
   --max: 1120px;
@@ -68,14 +68,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #111513; --surface: #181e1a; --tint: #202822; --line: #2e3831;
-    --ink: #eef1ec; --ink-muted: #a6b1a9; --clay: #b5502c; --clay-deep: #e3906a;
+    --ink: #eef1ec; --ink-muted: #a6b1a9; --accent: #1a7f45; --accent-deep: #3dba6e; --accent-word: #3dba6e;
     --dark: #1f3a2f; --dark-line: #34503f;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #111513; --surface: #181e1a; --tint: #202822; --line: #2e3831;
-  --ink: #eef1ec; --ink-muted: #a6b1a9; --clay: #b5502c; --clay-deep: #e3906a;
+  --ink: #eef1ec; --ink-muted: #a6b1a9; --accent: #1a7f45; --accent-deep: #3dba6e; --accent-word: #3dba6e;
   --dark: #1f3a2f; --dark-line: #34503f;
   color-scheme: dark;
 }
@@ -84,14 +84,15 @@
 html { background: var(--paper); scroll-behavior: smooth; }
 body { margin: 0; font-family: var(--font-sans); font-size: 16px; line-height: 24px; background: var(--paper); color: var(--ink); overflow-x: hidden; }
 img { max-width: 100%; display: block; }
-a { color: var(--clay-deep); }
+a { color: var(--accent-deep); }
 p { margin: 0; }
-h1, h2, .display { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+h1, h2, .display { font-family: var(--font-display); font-weight: 700; margin: 0; text-wrap: balance; }
 p, li { text-wrap: pretty; }
 h3 { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; }
-.display { font-size: 40px; line-height: 44px; letter-spacing: -0.5px; }
-.h1 { font-size: 32px; line-height: 38px; }
-.h2 { font-size: 28px; line-height: 34px; }
+.display { font-size: 40px; line-height: 44px; letter-spacing: -1px; }
+.h1 { font-size: 32px; line-height: 38px; letter-spacing: -0.8px; }
+.h2 { font-size: 28px; line-height: 34px; letter-spacing: -0.5px; }
+.word { color: var(--accent-word); }
 .label { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--ink-muted); }
 .lead { font-size: 18px; line-height: 28px; }
 .muted { color: var(--ink-muted); }
@@ -101,14 +102,14 @@ h3 { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; }
 .sec-head { display: flex; flex-direction: column; gap: 16px; max-width: 720px; margin: 0 0 40px; }
 .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; align-items: center; }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 24px; border-radius: var(--r-pill); border: 0; background: var(--clay); color: var(--on-clay); font: 700 16px/20px var(--font-sans); text-decoration: none; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 24px; border-radius: var(--r-pill); border: 0; background: var(--accent); color: var(--on-accent); font: 700 16px/20px var(--font-sans); text-decoration: none; cursor: pointer; }
 .btn .arr { display: inline-block; transition: transform .15s ease; }
 .btn:hover .arr { transform: translateX(4px); }
 .btn { transition: transform .15s ease; }
-.btn:hover { background: var(--clay-press); }
+.btn:hover { background: var(--accent-press); }
 .btn:active { transform: scale(.97); }
 .btn:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--clay); display: inline-block; flex: none; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
 
 /* Header */
 header { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
@@ -116,7 +117,7 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 header .logo img { height: 28px; width: auto; }
 header nav { display: none; gap: 24px; }
 header nav a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px; }
-header nav a:hover { color: var(--clay-deep); }
+header nav a:hover { color: var(--accent-deep); }
 header .btn { font-size: 14px; padding: 8px 16px; }
 .logo-dark { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-light { display: none; } :root:not([data-theme="light"]) .logo-dark { display: block; } }
@@ -143,7 +144,7 @@ header .btn { font-size: 14px; padding: 8px 16px; }
 /* Forløb: nummereret liste med streg over, ingen kort */
 .steps { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 0; padding: 0; list-style: none; }
 .step { border-top: 2px solid var(--ink); padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
-.num { font-family: var(--font-display); font-size: 40px; line-height: 44px; color: var(--clay); }
+.num { font-family: var(--font-display); font-weight: 700; letter-spacing: -1px; font-size: 40px; line-height: 44px; color: var(--accent); }
 .when { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--ink-muted); }
 
 /* Mørke flader */
@@ -156,11 +157,11 @@ header .btn { font-size: 14px; padding: 8px 16px; }
 .price-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
 .pcard { border-radius: var(--r-lg); padding: 24px; display: flex; flex-direction: column; gap: 16px; background: var(--surface); border: 1px solid var(--line); }
 .pcard.dark { background: var(--dark); border-color: var(--dark); color: var(--on-dark); }
-.amount { font-family: var(--font-display); font-size: 40px; line-height: 44px; }
+.amount { font-family: var(--font-display); font-weight: 700; letter-spacing: -1px; font-size: 40px; line-height: 44px; }
 .amount small { font-family: var(--font-sans); font-size: 14px; font-weight: 700; line-height: 0; }
 .pcard ul, .extras ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .pcard li, .extras li { padding-left: 24px; position: relative; }
-.pcard li::before, .extras li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); }
+.pcard li::before, .extras li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .pcard .rule { height: 1px; background: currentColor; opacity: .2; }
 .pcard .note { margin-top: auto; font-size: 14px; line-height: 20px; }
 .stack { display: flex; flex-direction: column; gap: 16px; }
@@ -182,9 +183,9 @@ header .btn { font-size: 14px; padding: 8px 16px; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary { list-style: none; cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; gap: 16px; font-weight: 700; font-size: 18px; line-height: 28px; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary:hover { color: var(--clay-deep); }
+.faq summary:hover { color: var(--accent-deep); }
 .faq summary:active { opacity: .7; }
-.faq summary::after { content: "+"; flex: none; font-size: 24px; line-height: 28px; font-weight: 400; color: var(--clay); transition: transform .2s ease; }
+.faq summary::after { content: "+"; flex: none; font-size: 24px; line-height: 28px; font-weight: 400; color: var(--accent); transition: transform .2s ease; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details p { padding-bottom: 24px; max-width: 44em; color: var(--ink-muted); }
 
@@ -198,9 +199,9 @@ header .btn { font-size: 14px; padding: 8px 16px; }
 .form-grid { display: grid; gap: 16px; }
 .form-card .opt { font-weight: 400; color: var(--ink-muted); }
 .form-card input:focus-visible, .form-card textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.form-card [aria-invalid="true"] { border-color: var(--clay-deep); }
+.form-card [aria-invalid="true"] { border-color: var(--accent-deep); }
 .hp { position: absolute; left: -9999px; }
-.form-msg { font-size: 14px; line-height: 20px; color: var(--clay-deep); font-weight: 700; }
+.form-msg { font-size: 14px; line-height: 20px; color: var(--accent-deep); font-weight: 700; }
 .form-msg:empty { display: none; }
 .form-card button[disabled] { opacity: .6; cursor: wait; }
 .form-done { text-align: left; }
@@ -219,8 +220,8 @@ footer a { color: var(--on-dark); }
 
 @media (min-width: 720px) {
   .block { padding: 64px 0; }
-  .display { font-size: 56px; line-height: 60px; }
-  .h1 { font-size: 40px; line-height: 46px; }
+  .display { font-size: 56px; line-height: 60px; letter-spacing: -1.5px; }
+  .h1 { font-size: 40px; line-height: 46px; letter-spacing: -1px; }
   header nav { display: flex; }
   .phone { border-radius: 32px; padding: 6px; }
   .phone img { border-radius: 25px; }
@@ -264,7 +265,7 @@ footer a { color: var(--on-dark); }
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <h1 class="display">Når nogen googler dig, skal de finde dig.</h1>
+        <h1 class="display">Når nogen googler dig, skal de <span class="word">finde</span> dig.</h1>
         <p class="lead muted">Jeg laver enkle hjemmesider til små virksomheder i Nordsjælland og København. Jeg viser dig et gratis udkast af din nye forside på telefonen, før du betaler noget.</p>
         <a class="btn" href="#kontakt">Få et gratis udkast <span class="arr" aria-hidden="true">→</span></a>
         <span class="hero-note">Eller ring på <a href="tel:+4551866163">51 86 61 63</a></span>
@@ -426,7 +427,7 @@ footer a { color: var(--on-dark); }
         <p class="small muted" style="font-size:14px;line-height:20px">Jeg bruger kun dine oplysninger til at lave dit udkast og kontakte dig om det. Læs mere i <a href="privatliv.html">privatlivspolitikken</a>.</p>
       </form>
       <div class="form-card form-done" id="form-done" hidden tabindex="-1">
-        <h3 class="h2" id="done-title" style="font-family:var(--font-display);font-weight:400">Tak!</h3>
+        <h3 class="h2" id="done-title" style="font-family:var(--font-display);font-weight:700">Tak!</h3>
         <p class="muted">Jeg har fået dine oplysninger og ringer til dig, når jeg har kigget på det. Du betaler ikke noget for udkastet.</p>
       </div>
     </div>
